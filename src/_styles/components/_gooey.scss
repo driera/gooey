@@ -1,0 +1,69 @@
+.experience {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.experience-base-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+
+.experience-gooey {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: url("#goo-no-comp");
+    z-index: 0;
+
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.experience-gooey-cursor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: $primary-color;
+}
+
+.experience-gooey-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    opacity: 1;
+}
+
+.experience-gooey-dot {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    margin-left: -55px;
+    margin-top: -55px;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    background: $primary-color;
+
+    @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+            transform: scale(0.6 + random(40)/100);
+        }
+    }
+}

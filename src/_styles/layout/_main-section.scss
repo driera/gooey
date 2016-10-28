@@ -1,0 +1,7 @@
+.main-section {
+    padding: 60px 0;
+
+    @include breakpoint($min-desktop) {
+        padding: 100px 0;
+    }
+}

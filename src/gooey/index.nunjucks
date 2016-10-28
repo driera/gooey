@@ -1,0 +1,44 @@
+{% extends '_layouts/base.nunjucks' %}
+
+{% block config %}
+  {# Correct base url pathing for this page #}
+  {% set baseUrl = '../' %}
+  {% set baseImg = '../images/' %}
+{% endblock %}
+
+{% block content %}
+    <section class="main-section">
+        <div class="container">
+            <div class="experience">
+                <div class="experience-base-img">
+                    <img src="{{baseImg}}gooey/experience.png">
+                </div>
+                <div class="experience-gooey">
+                    <img src="{{baseImg}}gooey/experience-bg.png">
+                    <div class="experience-gooey-block">
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                    </div>
+                    <div class="experience-gooey-cursor"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="width: 0; height: 0;">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        </filter>
+        <filter id="goo-no-comp">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+        </filter>
+      </defs>
+    </svg>
+{% endblock %}
