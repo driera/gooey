@@ -78,40 +78,40 @@ export default class Experience {
         });
     }
 
-    followCursor() {
-        let self = this;
-        this.$box = $('.experience-gooey-cursor');
-        this.$container = $(".experience");
-        this.$outline = $(".experience");
+    // followCursor() {
+    //     let self = this;
+    //     this.$box = $('.experience-gooey-cursor');
+    //     this.$container = $(".experience");
+    //     this.$outline = $(".experience");
+    //
+    //     this.enabled = false;
+    //     this.left = $container.offset().left;
+    //     this.max  = $container.outerWidth() - $box.outerWidth();
+    //
+    //     $box.on("mouseenter", self.enableMovement);
+    //     $container.on("mouseleave", self.moveBoxBack);
+    //
+    // }
 
-        this.enabled = false;
-        this.left = $container.offset().left;
-        this.max  = $container.outerWidth() - $box.outerWidth();
-
-        $box.on("mouseenter", self.enableMovement);
-        $container.on("mouseleave", self.moveBoxBack);
-
-    }
-
-    enableMovement() {
-        if (enabled) return;
-        enabled = true;
-        TweenMax.set($outline, { outlineColor: "green" });
-        $container.on("mousemove", moveBox);
-    }
-    
-    moveBox(e) {
-        let self = this;
-        let x = e.pageX - this.left;
-        if (x > max) { x = max; }
-        TweenMax.to($box, 0.5, { x: x, rotation: 20, 		ease: Power1.easenone	 });
-    };
-
-    moveBoxBack() {
-        $container.off("mousemove", moveBox);
-        enabled = false;
-        TweenMax.set($outline, { outlineColor: "red" });
-        TweenMax.to($box, 0.75, { rotation: 0, ease: Back.easeOut });
-    };
+    // enableMovement() {
+    //     if (enabled) return;
+    //     enabled = true;
+    //     TweenMax.set($outline, { outlineColor: "green" });
+    //     $container.on("mousemove", moveBox);
+    // }
+    //
+    // moveBox(e) {
+    //     let self = this;
+    //     let x = e.pageX - this.left;
+    //     if (x > max) { x = max; }
+    //     TweenMax.to($box, 0.5, { x: x, rotation: 20, 		ease: Power1.easenone	 });
+    // };
+    //
+    // moveBoxBack() {
+    //     $container.off("mousemove", moveBox);
+    //     enabled = false;
+    //     TweenMax.set($outline, { outlineColor: "red" });
+    //     TweenMax.to($box, 0.75, { rotation: 0, ease: Back.easeOut });
+    // };
 
 }
