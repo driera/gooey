@@ -4,7 +4,7 @@
     height: 200px;
     margin: 0 auto;
     cursor: pointer;
-    background: rgba($primary-color, 0.1);
+    // background: rgba($primary-color, 0.1);
 }
 
 .experience-base-img {
@@ -36,19 +36,20 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -40px;
-    margin-left: -40px;
-    width: 80px;
-    height: 80px;
+    margin-top: -30px;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: linear-gradient(45deg, $primary-color, $primary-color-dark);
+    background: linear-gradient(45deg,$primary-color,$primary-color-dark);
+    z-index: 0;
 }
 
 .experience-gooey-block {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 0;
+    z-index: 1;
     opacity: 1;
 }
 
@@ -65,6 +66,7 @@
     @for $i from 1 through 8 {
         &:nth-child(#{$i}) {
             transform: scale(0.6 + random(40)/100);
+            background: mix($primary-color, $primary-color-dark, random(100%));
         }
     }
 }
