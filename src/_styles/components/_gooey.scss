@@ -41,7 +41,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: $primary-color;
+    background: linear-gradient(45deg, $primary-color, $primary-color-dark);
 }
 
 .experience-gooey-block {
@@ -59,7 +59,7 @@
     margin-left: -55px;
     margin-top: -55px;
     border-radius: 50%;
-    mix-blend-mode: multiply;
+    // mix-blend-mode: multiply;
     background: $primary-color;
 
     @for $i from 1 through 8 {
