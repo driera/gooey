@@ -26,6 +26,40 @@
                     <div class="experience-gooey-cursor"></div>
                 </div>
             </div>
+            <div class="experience">
+                <div class="experience-base-img">
+                    <img src="{{baseImg}}gooey/experience2.png">
+                </div>
+                <div class="experience-gooey">
+                    <img src="{{baseImg}}gooey/experience2-bg.png">
+                    <div class="experience-gooey-block">
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                    </div>
+                    <div class="experience-gooey-cursor"></div>
+                </div>
+            </div>
+            <div class="experience">
+                <div class="experience-base-img">
+                    <img src="{{baseImg}}gooey/experience3.png">
+                </div>
+                <div class="experience-gooey">
+                    <img src="{{baseImg}}gooey/experience3-bg.png">
+                    <div class="experience-gooey-block">
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                        <div class="experience-gooey-dot"></div>
+                    </div>
+                    <div class="experience-gooey-cursor"></div>
+                </div>
+            </div>
         </div>
     </section>
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="width: 0; height: 0;">
