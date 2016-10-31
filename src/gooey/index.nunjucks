@@ -9,60 +9,46 @@
 {% block content %}
     <section class="main-section">
         <div class="container">
-            <div class="experience">
-                <div class="experience-base-img">
+            <div class="gooey-container">
+                <div class="gooey-base-img">
                     <img src="{{baseImg}}gooey/experience.png">
                 </div>
-                <div class="experience-gooey">
-                    <img src="{{baseImg}}gooey/experience-bg.png">
-                    <div class="experience-gooey-block">
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
+                <div class="gooey-content">
+                    <div class="gooey-block" style="filter: url('#goo-no-comp');">
+                        <img src="{{baseImg}}gooey/experience-bg01.png">
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-dot"></div>
                     </div>
-                    <div class="experience-gooey-cursor"></div>
+                    <div class="gooey-block" style="filter: url('#goo-no-comp');">
+                        <img src="{{baseImg}}gooey/experience-bg02.png">
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-cursor"></div>
+                    </div>
                 </div>
             </div>
-            <div class="experience">
-                <div class="experience-base-img">
+            <div class="gooey-container">
+                <div class="gooey-base-img">
                     <img src="{{baseImg}}gooey/experience2.png">
                 </div>
-                <div class="experience-gooey">
-                    <img src="{{baseImg}}gooey/experience2-bg.png">
-                    <div class="experience-gooey-block">
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
+                <div class="gooey-content">
+                    <div class="gooey-block" style="filter: url('#goo-no-comp');">
+                        <img src="{{baseImg}}gooey/experience-bg03.png">
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-dot"></div>
                     </div>
-                    <div class="experience-gooey-cursor"></div>
-                </div>
-            </div>
-            <div class="experience">
-                <div class="experience-base-img">
-                    <img src="{{baseImg}}gooey/experience3.png">
-                </div>
-                <div class="experience-gooey">
-                    <img src="{{baseImg}}gooey/experience3-bg.png">
-                    <div class="experience-gooey-block">
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
-                        <div class="experience-gooey-dot"></div>
+                    <div class="gooey-block" style="filter: url('#goo-no-comp');">
+                        <img src="{{baseImg}}gooey/experience-bg04.png">
+                        <div class="gooey-dot"></div>
+                        <div class="gooey-cursor"></div>
                     </div>
-                    <div class="experience-gooey-cursor"></div>
                 </div>
             </div>
         </div>
     </section>
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="width: 0; height: 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" style="width: 0; height: 0; visibility: hidden;">
       <defs>
         <filter id="goo">
           <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />

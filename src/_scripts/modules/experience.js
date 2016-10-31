@@ -7,18 +7,15 @@ let TweenMax = require('Gsap');
 export default class Experience {
     constructor() {
         let self = this;
-        this._gooey = $('.experience');
-        this._dots = '.experience-gooey-dot';
-        this._cursorClass = '.experience-gooey-cursor';
+        this._gooey = $('.gooey-container');
+        this._dots = '.gooey-dot';
+        this._contentClass = '.gooey-content';
+        this._cursorClass = '.gooey-cursor';
 
-        // this.radius = this._gooey.outerWidth() / 2;
-        // this.left = this._gooey.offset().left + this.radius;
-        // this.top = this._gooey.offset().top + this.radius;
-        // this.hMax  = (this._gooey.outerWidth() - $(this._cursorClass).outerWidth()) / 2.75;
-        // this.vMax  = (this._gooey.outerHeight() - $(this._cursorClass).outerHeight()) / 2.75;
-
-        $(window).ready(function() {
-            self.addEvents();
+        $(window).on('load resize', function() {
+            if($(window).width() > 768) {
+                self.addEvents();
+            }
         });
     }
 
@@ -41,12 +38,13 @@ export default class Experience {
 
     enableMovement(_gooey) {
         let self = this;
+        let _content = _gooey.find(this._contentClass);
         let _cursor = _gooey.find(this._cursorClass);
-        let _radius = _gooey.outerWidth() / 2;
-        let _left = _gooey.offset().left + _radius;
-        let _top = _gooey.offset().top + _radius;
-        let _hMax  = (_gooey.outerWidth() - _cursor.outerWidth()) / 2.75;
-        let _vMax  = (_gooey.outerHeight() - _cursor.outerHeight()) / 2.75;
+        let _radius = _content.outerWidth() / 2;
+        let _left = _content.offset().left + _radius;
+        let _top = _content.offset().top + _radius;
+        let _hMax  = (_content.outerWidth() - _cursor.outerWidth()) / 3;
+        let _vMax  = (_content.outerHeight() - _cursor.outerHeight()) / 3;
 
         _gooey.on("mousemove", function(e) {
             self.moveBox(e,_cursor,_left,_top,_hMax,_vMax);
@@ -105,10 +103,12 @@ export default class Experience {
 
             function updateCirclePos(){
                 var circle = $obj.data("circle");
+
                 TweenMax.set($obj, {
-                    x:Math.cos(circle.angle)*circle.radius,
-                    y:Math.sin(circle.angle)*circle.radius,
+                    x: Math.cos(circle.angle)*circle.radius,
+                    y: Math.sin(circle.angle)*circle.radius,
                 })
+
                 requestAnimationFrame(updateCirclePos);
             }
             updateCirclePos();
@@ -120,16 +120,18 @@ export default class Experience {
         this.setupCircle($obj);
         $obj.data("circle").radius = 0;
         $obj.data("circle").angle = 0;
+
         TweenMax.to($obj.data("circle"), startDuration, {
-            delay:delay,
-            radius:radius,
-            ease:Quad.easeInOut
+            delay: delay,
+            radius: radius,
+            ease: Quad.easeInOut
         });
+
         TweenMax.to($obj.data("circle"), loopDuration, {
-            delay:delay,
-            angle:Math.PI * 2 * (Math.random() < 0.5 ? -1 : 1),
-            ease:Linear.easeNone,
-            repeat:-1
+            delay: delay,
+            angle: Math.PI * 2 * (Math.random() < 0.5 ? -1 : 1),
+            ease: Linear.easeNone,
+            repeat: -1
         });
     }
 
@@ -137,7 +139,7 @@ export default class Experience {
         TweenMax.to($obj.data("circle"), duration, {
             radius: 0,
             ease: Quad.easeInOut,
-            onComplete:function() {
+            onComplete: function() {
                 TweenMax.killTweensOf($obj.data("circle"));
             }
         });

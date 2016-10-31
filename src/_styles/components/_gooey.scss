@@ -1,13 +1,25 @@
-.experience {
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gooey-container {
+    display: block;
     position: relative;
     width: 200px;
     height: 200px;
     margin: 0 auto;
     cursor: pointer;
-    // background: rgba($primary-color, 0.1);
 }
 
-.experience-base-img {
+.gooey-content {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.gooey-base-img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,14 +27,17 @@
     z-index: 1;
 }
 
-.experience-gooey {
+.gooey-block {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: url("#goo-no-comp");
+    top: 50%;
+    left: 50%;
+    opacity: 0.85;
     z-index: 0;
+    filter: url("#goo-no-comp");
+
+    @include breakpoint (max-width 768px) {
+        filter: none !important;
+    }
 
     img {
         position: absolute;
@@ -32,7 +47,28 @@
     }
 }
 
-.experience-gooey-cursor {
+.gooey-dot {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    margin-left: -55px;
+    margin-top: -55px;
+    border-radius: 50%;
+    background: $primary-color;
+
+    @include breakpoint (max-width 768px) {
+        display: none;
+    }
+
+    @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+            transform: scale(0.6 + random(40)/100);
+            background: mix($primary-color, $primary-color-dark, random(100%));
+        }
+    }
+}
+
+.gooey-cursor {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -43,30 +79,8 @@
     border-radius: 50%;
     background: linear-gradient(45deg,$primary-color,$primary-color-dark);
     z-index: 0;
-}
 
-.experience-gooey-block {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    opacity: 1;
-}
-
-.experience-gooey-dot {
-    position: absolute;
-    width: 110px;
-    height: 110px;
-    margin-left: -55px;
-    margin-top: -55px;
-    border-radius: 50%;
-    // mix-blend-mode: multiply;
-    background: $primary-color;
-
-    @for $i from 1 through 8 {
-        &:nth-child(#{$i}) {
-            transform: scale(0.6 + random(40)/100);
-            background: mix($primary-color, $primary-color-dark, random(100%));
-        }
+    @include breakpoint (max-width 768px) {
+        display: none;
     }
 }
