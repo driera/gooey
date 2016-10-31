@@ -9,14 +9,14 @@ export default class Experience {
         let self = this;
         this._gooey = $('.experience');
         this._dots = '.experience-gooey-dot';
-        this.$box = $('.experience-gooey-cursor');
+        this.$cursor = $('.experience-gooey-cursor');
 
         this.enabled = false;
         this.radius = this._gooey.outerWidth() / 2;
         this.left = this._gooey.offset().left + this.radius;
         this.top = this._gooey.offset().top + this.radius;
-        this.hMax  = (this._gooey.outerWidth() - this.$box.outerWidth()) / 2.75;
-        this.vMax  = (this._gooey.outerHeight() - this.$box.outerHeight()) / 2.75;
+        this.hMax  = (this._gooey.outerWidth() - this.$cursor.outerWidth()) / 2.75;
+        this.vMax  = (this._gooey.outerHeight() - this.$cursor.outerHeight()) / 2.75;
 
         $(window).ready(function() {
             self.addEvents();
@@ -36,9 +36,59 @@ export default class Experience {
             $(this).find(self._dots).each(function(i){
                 self.stopCircleAnim($(this), 0.5 + (i * 0.1));
             });
-            self.moveBoxBack();
+            self.moveCursorBack();
         });
     }
+
+    enableMovement(e) {
+        let self = this;
+        if (this.enabled) return;
+        this.enabled = true;
+        this._gooey.on("mousemove", function(e) {
+            self.moveCursor(e);
+        });
+    }
+
+    moveCursor(e) {
+        let self = this;
+        let y = e.pageY - this.top;
+        let x = e.pageX - this.left;
+        if (x > this.hMax) {
+            x = this.hMax;
+        }
+        if (x < this.hMax * -1) {
+            x = this.hMax * -1;
+        }
+        if (y > this.vMax) {
+            y = this.vMax;
+        }
+        if (y < this.vMax * -1) {
+            y = this.vMax * -1;
+        }
+
+        TweenMax.to(self.$cursor, 0.35, {
+            x: x,
+            y: y,
+            rotation: 20,
+            scale: 1,
+            ease: Power3.easenone
+        });
+    };
+
+    moveCursorBack(e) {
+        let self = this;
+        this._gooey.off("mousemove", function(e) {
+            self.moveCursor(e);
+        });
+        this.enabled = false;
+        TweenMax.to(self.$cursor, 2.5, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            scale: 0.9,
+            ease: Elastic.easeOut.config(1.6, 0.2),
+        });
+    };
 
     setupCircle($obj){
         if(typeof($obj.data("circle")) == "undefined"){
@@ -86,55 +136,4 @@ export default class Experience {
             }
         });
     }
-
-    enableMovement(e) {
-        let self = this;
-
-        if (this.enabled) return;
-        this.enabled = true;
-        this._gooey.on("mousemove", function(e) {
-            self.moveBox(e);
-        });
-    }
-
-    moveBox(e) {
-        let self = this;
-        let y = e.pageY - this.top;
-        let x = e.pageX - this.left;
-        if (x > this.hMax) {
-            x = this.hMax;
-        }
-        if (x < this.hMax * -1) {
-            x = this.hMax * -1;
-        }
-        if (y > this.vMax) {
-            y = this.vMax;
-        }
-        if (y < this.vMax * -1) {
-            y = this.vMax * -1;
-        }
-
-        TweenMax.to(self.$box, 0.35, {
-            x: x,
-            y: y,
-            rotation: 20,
-            scale: 1,
-            ease: Power3.easenone
-        });
-    };
-
-    moveBoxBack(e) {
-        let self = this;
-        this._gooey.off("mousemove", function(e) {
-            self.moveBox(e);
-        });
-        this.enabled = false;
-        TweenMax.to(self.$box, 2.5, {
-            x: 0,
-            y: 0,
-            rotation: 0,
-            scale: 0.9,
-            ease: Elastic.easeOut.config(1.6, 0.2),
-        });
-    };
 }
